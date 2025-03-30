@@ -19,15 +19,15 @@ public class KafkaConfig {
     @Bean
     public ConsumerFactory<String, String> consumer() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.10.104:31386");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "bankaccConsumer");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory listenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumer());
         return factory;

@@ -19,7 +19,6 @@ public class MessageController {
         String respuesta = "Envio exitoso";
         try {
             productor.sendMessage(mensaje);
-
         } catch (Exception e) {
             respuesta = "Envio fallido";
         }
